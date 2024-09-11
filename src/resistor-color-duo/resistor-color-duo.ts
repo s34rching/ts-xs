@@ -16,4 +16,4 @@ const getResistorCode = (mixedColor: string): number => {
   }
 }
 
-console.log(getResistorCode('yellow-black'))
+getResistorCode('yellow-black')
