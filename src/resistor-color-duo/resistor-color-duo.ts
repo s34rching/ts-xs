@@ -4,7 +4,7 @@ interface ColorsMap {
   [name: string]: number
 }
 
-const getResistorCode = (mixedColor: string): number => {
+export const getResistorCode = (mixedColor: string): number => {
   try {
     const colors = mixedColor.split('-')
     const [firstColor, secondColor] = colors
