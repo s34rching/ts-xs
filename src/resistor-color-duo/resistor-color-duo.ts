@@ -6,8 +6,7 @@ interface ColorsMap {
 
 export const getResistorCode = (mixedColor: string): number => {
   try {
-    const colors = mixedColor.split('-')
-    const [firstColor, secondColor] = colors
+    const [firstColor, secondColor] = mixedColor.split('-')
     const code = `${(colorsMap as ColorsMap)[firstColor]}${(colorsMap as ColorsMap)[secondColor]}`
 
     return Number.parseInt(code, 10)
