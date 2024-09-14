@@ -76,16 +76,23 @@ export const hasUnsupportedOperations = (request: string): boolean => {
 }
 
 export const validateRequest = (request: string): ValidationResult => {
+  const nums = parseNumbers(request)
+  const ops = parseOperations(request)
+
   if (!hasNumber(request)) {
     return { isValid: false, error: errors.missingNumbers }
   }
 
-  if (!hasSupportedOperations(request) && (Array.isArray(parseNumbers(request)) && parseNumbers(request)!.length > 1)) {
+  if (!hasSupportedOperations(request) && (Array.isArray(nums) && nums!.length > 1)) {
     return { isValid: false, error: errors.missingOperations }
   }
 
   if (hasUnsupportedOperations(request)) {
     return { isValid: false, error: errors.unsupportedOperations }
+  }
+
+  if (Array.isArray(nums) && nums.length! > 1 && Array.isArray(ops) && (nums.length! - 1 !== ops.length!)) {
+    return { isValid: false, error: errors.invalidOperandsAmount }
   }
 
   return { isValid: true, error: null }

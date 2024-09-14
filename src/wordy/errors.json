@@ -1,5 +1,6 @@
 {
   "missingNumbers": "Request does not contain numbers",
   "missingOperations": "Request does not contain supported operations",
-  "unsupportedOperations": "Request has unsupported operation"
+  "unsupportedOperations": "Request has unsupported operation",
+  "invalidOperandsAmount": "Invalid amount of operands"
 }

@@ -8,6 +8,8 @@ describe('Wordy', () => {
   const invalidWithoutNumbers = 'What is the universal truth?'
   const invalidWithoutOperations = 'What is 5 reflected to 6?'
   const invalidWithUnsupportedOperation = 'What is the square root of 6?'
+  const invalidTooManyOperandsRequest = 'What is 3 plus plus 6?'
+  const invalidNotEnoughOperandsRequest = 'What is 3 6?'
 
   describe('parseNumbers', () => {
     test('should return number if there is one in request', () => {
@@ -64,6 +66,16 @@ describe('Wordy', () => {
     test('should reject request if unsupported operation is found', () => {
       expect(validateRequest(invalidWithUnsupportedOperation))
         .toEqual({ isValid: false, error: errors.unsupportedOperations })
+    })
+
+    test('should reject request if there are too many operands', () => {
+      expect(validateRequest(invalidTooManyOperandsRequest))
+        .toEqual({ isValid: false, error: errors.invalidOperandsAmount })
+    })
+
+    test('should reject request if there are not enough operands', () => {
+      expect(validateRequest(invalidTooManyOperandsRequest))
+        .toEqual({ isValid: false, error: errors.invalidOperandsAmount })
     })
   })
 
