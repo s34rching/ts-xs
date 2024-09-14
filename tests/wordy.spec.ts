@@ -1,3 +1,4 @@
+import * as errors from '../src/wordy/errors.json'
 import {calculate, evaluate, parseNumbers, parseOperations, validateRequest} from "../src/wordy/wordy";
 
 describe('Wordy', () => {
@@ -52,17 +53,17 @@ describe('Wordy', () => {
 
     test('should reject request if numbers are not found', () => {
       expect(validateRequest(invalidWithoutNumbers))
-        .toEqual({ isValid: false, error: 'Request does not contain numbers' })
+        .toEqual({ isValid: false, error: errors.missingNumbers })
     })
 
     test('should reject request if supported operations are not found and there are numbers', () => {
       expect(validateRequest(invalidWithoutOperations))
-        .toEqual({ isValid: false, error: 'Request does not contain supported operations' })
+        .toEqual({ isValid: false, error: errors.missingOperations })
     })
 
     test('should reject request if unsupported operation is found', () => {
       expect(validateRequest(invalidWithUnsupportedOperation))
-        .toEqual({ isValid: false, error: 'Request has unsupported operation' })
+        .toEqual({ isValid: false, error: errors.unsupportedOperations })
     })
   })
 
@@ -90,15 +91,15 @@ describe('Wordy', () => {
     })
 
     test('should return error message if there is not number in request', () => {
-      expect(evaluate(invalidWithoutNumbers)).toEqual('Request does not contain numbers')
+      expect(evaluate(invalidWithoutNumbers)).toEqual(errors.missingNumbers)
     })
 
     test('should return error message if supported operations are not found and there are numbers', () => {
-      expect(evaluate(invalidWithoutOperations)).toEqual('Request does not contain supported operations')
+      expect(evaluate(invalidWithoutOperations)).toEqual(errors.missingOperations)
     })
 
     test('should return error message if unsupported operation is found', () => {
-      expect(evaluate(invalidWithUnsupportedOperation)).toEqual('Request has unsupported operation' )
+      expect(evaluate(invalidWithUnsupportedOperation)).toEqual(errors.unsupportedOperations)
     })
   })
 })

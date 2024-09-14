@@ -1,3 +1,5 @@
+import * as errors from './errors.json'
+
 interface ValidationResult {
   isValid: boolean,
   error: string | null
@@ -75,15 +77,15 @@ export const hasUnsupportedOperations = (request: string): boolean => {
 
 export const validateRequest = (request: string): ValidationResult => {
   if (!hasNumber(request)) {
-    return { isValid: false, error: 'Request does not contain numbers' }
+    return { isValid: false, error: errors.missingNumbers }
   }
 
   if (!hasSupportedOperations(request) && (Array.isArray(parseNumbers(request)) && parseNumbers(request)!.length > 1)) {
-    return { isValid: false, error: 'Request does not contain supported operations' }
+    return { isValid: false, error: errors.missingOperations }
   }
 
   if (hasUnsupportedOperations(request)) {
-    return { isValid: false, error: 'Request has unsupported operation' }
+    return { isValid: false, error: errors.unsupportedOperations }
   }
 
   return { isValid: true, error: null }
