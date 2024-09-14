@@ -1,7 +1,3 @@
-// Extract numbers
-// Extract operations
-// Handle
-
 interface ValidationResult {
   isValid: boolean,
   error: string | null
