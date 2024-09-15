@@ -59,14 +59,6 @@ export const parseOperations = (request: string): (string[] | null) => {
   return request.match(validationPattern)
 }
 
-export const hasNumber = (request: string): boolean => {
-  return parseNumbers(request) !== null
-}
-
-export const hasSupportedOperations = (request: string): boolean => {
-  return parseOperations(request) !== null
-}
-
 export const hasUnsupportedOperations = (request: string): boolean => {
   const {cube, modulo, power, squareRoot, exponent} = operations.unsupported
   const validationPattern = new RegExp(`(${cube.name}|${modulo.name}|${power.name}|${squareRoot.name}|${exponent.name})`)
@@ -79,11 +71,11 @@ export const validateRequest = (request: string): ValidationResult => {
   const nums = parseNumbers(request)
   const ops = parseOperations(request)
 
-  if (!hasNumber(request)) {
+  if (nums === null) {
     return { isValid: false, error: errors.missingNumbers }
   }
 
-  if (!hasSupportedOperations(request) && (Array.isArray(nums) && nums!.length > 1)) {
+  if (ops === null && (Array.isArray(nums) && nums!.length > 1)) {
     return { isValid: false, error: errors.missingOperations }
   }
 
