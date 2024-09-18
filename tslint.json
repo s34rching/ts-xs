@@ -7,7 +7,16 @@
     "rules": {
         "await-promise": true,
         "ban-ts-ignore": true,
-        "no-var-requires": true
+        "no-any": true,
+        "no-console": true,
+        "no-empty": true,
+        "no-return-await": true,
+        "no-require-imports": true,
+        "no-var-requires": true,
+        "one-variable-per-declaration": true,
+        "ordered-imports": true,
+        "promise-function-async": true,
+        "triple-equals": true
     },
     "rulesDirectory": []
 }
