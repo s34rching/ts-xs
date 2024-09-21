@@ -1,0 +1,14 @@
+{
+  "errors": {
+    "notEnoughSides": "Not enough sides",
+    "tooManySides": "Too many sides",
+    "zeroLengthSide": "Triangle side cannot be less than 0",
+    "invalidSides": "Impossible to compose triangle from provided values"
+  },
+  "success": {
+    "valid": "Valid triangle",
+    "equilateral": "Equilateral triangle",
+    "isosceles": "Isosceles triangle",
+    "scalene": "Scalene triangle"
+  }
+}
