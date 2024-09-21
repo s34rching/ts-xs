@@ -1,6 +1,11 @@
 export interface ValidationData {
   isTriangle: boolean
-  message: string | null
+  message: string
+}
+
+export interface ResultData {
+  isTypeDefined: boolean
+  result: string
 }
 
 export const validateSides = (sides: number[]): ValidationData => {
@@ -20,23 +25,23 @@ export const validateSides = (sides: number[]): ValidationData => {
     return { isTriangle: false, message: "Impossible to compose triangle from provided values" }
   }
 
-  return { isTriangle: true, message: null }
+  return { isTriangle: true, message: "Valid triangle" }
 }
 
-export const defineTriangleType = (sides: number[]): string | null => {
+export const defineTriangleType = (sides: number[]): ResultData => {
   const validated = validateSides(sides)
 
   if (validated.isTriangle) {
     const sortedSides = sides.sort((a, b) => a - b)
 
     if (sides[0] === sides[1] && sides[1] === sides[2]) {
-      return "Equilateral triangle"
+      return { isTypeDefined: true, result: "Equilateral triangle" }
     } if (sortedSides[1] === sortedSides[0] || sortedSides[1] === sortedSides[2]) {
-      return "Isosceles triangle"
+      return { isTypeDefined: true, result: "Isosceles triangle" }
     } else {
-      return "Scalene triangle"
+      return { isTypeDefined: true, result: "Scalene triangle" }
     }
   } else {
-    return validated.message
+    return { isTypeDefined: false, result: validated.message }
   }
 }
