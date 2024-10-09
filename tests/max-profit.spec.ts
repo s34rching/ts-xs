@@ -12,4 +12,8 @@ describe('"getMaxProfit"', () => {
   it('should return 0 if rates are descending', () => {
     expect(getMaxProfit([7, 6, 4, 3, 2])).toEqual(0)
   })
+
+  it('should return 0 if rates are the same', () => {
+    expect(getMaxProfit([2, 2, 2, 2, 2])).toEqual(0)
+  })
 })
