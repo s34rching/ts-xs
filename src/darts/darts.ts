@@ -1,8 +1,4 @@
 export const countPoints = (x: number, y: number) => {
-  if (Math.abs(x) > 10 || Math.abs(y) > 10) {
-    return 0
-  }
-
   const length = Math.sqrt(x * x + y * y)
 
   if (length > 10) {
