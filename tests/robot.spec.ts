@@ -1,4 +1,4 @@
-import {Robot} from "../../src/robot-name/robot";
+import {Robot} from "../src/robot-name/robot";
 
 describe('"Robot"', () => {
   const namePattern = /[A-Z]{2}[0-9]{3}/
