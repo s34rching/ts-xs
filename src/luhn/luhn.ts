@@ -43,8 +43,5 @@ export const validateNumber = (target: string | number): boolean => {
     return previous! + current!
   }, 0)
 
-  console.log(evenDigits)
-  console.log(oddDigits)
-
   return sum! % 10 === 0
 }
